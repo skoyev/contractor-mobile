@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
+      <ion-segment-button value="all">All</ion-segment-button>
+      <ion-segment-button value="favorites">Favorites</ion-segment-button>
+    </ion-segment>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentFilter()">
+        <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-searchbar color="primary"
+                   [(ngModel)]="queryText"
+                   (ionInput)="updateProject()"
+                   placeholder="Search">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="outer-content">
+ <ion-list *ngFor="let project of projects">
+    <ion-list-header>
+      {{project.group}}
+    </ion-list-header>
+
+    <ion-item-sliding *ngFor="let item of project.items">
+      <ion-item (click)="itemSelected(item)">
+        <ion-avatar item-left>
+          <img src="{{item.imgAsset}}">
+        </ion-avatar>
+        <button ion-item (click)="goToProjectDetail(item)">
+          <h2>{{item.name}}</h2>
+          <p>
+            {{item.description}}
+          </p>
+        </button>
+      </ion-item>
+      
+      <ion-item-options>
+        <button ion-button color="light" icon-left>
+          <ion-icon name="ios-more"></ion-icon>
+          More
+        </button>
+        <button ion-button color="primary" icon-left>
+          <ion-icon name="text"></ion-icon>
+          Text
+        </button>
+        <button ion-button color="secondary" icon-left>
+          <ion-icon name="call"></ion-icon>
+          Call
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>     
+  </ion-list>  
+</ion-content>

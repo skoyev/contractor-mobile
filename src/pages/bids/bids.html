@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>My Bids</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+ <ion-list>
+    <ion-item-sliding *ngFor="let bid of bids">
+      <ion-item (click)="goToBidDetail(bid)">
+      	<h2>{{bid.name}}</h2>
+      </ion-item>      
+      <ion-item-options>
+        <button ion-button color="light" icon-left>
+          <ion-icon name="ios-more"></ion-icon>
+          More
+        </button>
+        <button ion-button color="primary" icon-left>
+          <ion-icon name="text"></ion-icon>
+          Text
+        </button>
+      </ion-item-options>      
+    </ion-item-sliding>     
+  </ion-list>
+</ion-content>

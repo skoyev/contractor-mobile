@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Project Detail</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+ <ion-grid>
+  <ion-row>
+    <ion-col width-25><h2>{{item.name}}</h2></ion-col>
+    <ion-col width-75><h2>{{item.description}}</h2></ion-col>
+  </ion-row>
+  
+  <ion-row>
+    <ion-col width-25><h2><button ion-button (click)="showBid(item)" color="primary" block>Bids</button></h2></ion-col>
+  </ion-row>
+    
+</ion-grid> 
+</ion-content>
