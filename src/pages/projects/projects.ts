@@ -4,8 +4,9 @@ import { AlertController, App, ItemSliding, List, ModalController, NavController
 
 import { LoginPage } from '../login/login';
 import { ProjectDetailPage } from '../project-detail/project-detail';
+import { NewProjectPage } from '/new-project/new-project';
 import { UserData } from '../../providers/user-data';
-
+import { SegmentModel } from '../../model/segment';
 
 @Component({
   selector: 'page-projects',
@@ -13,48 +14,77 @@ import { UserData } from '../../providers/user-data';
 })
 export class ProjectsPage {
   username: string;
+  projectSegment: string;
   queryText = '';
+  projects: any;
 
   @ViewChild('projectList', {read: Array}) projectList: Array<string>;
 
+  /*
   projects = [
     {group:'Electric', items : [
     	{name : 'Electric Name1', description : 'Electric Description1', imgAsset : 'assets/img/appicon.png'},
     	{name : 'Electric Name2', description : 'Electric Description2', imgAsset : 'assets/img/appicon.png'}
-    ]}, 
+    ]},
     {group:'Plumber', items : [
     	{name : 'Plumber 1', description : 'Plumber Description 1', imgAsset : 'assets/img/appicon.png'},
     	{name : 'Plumber 2', description : 'Plumber Description 2', imgAsset : 'assets/img/appicon.png'}
-    ]}    
+    ]}
   ];
-  
+  */
+
   itemSelected(item: string) {
     console.log("Selected Item", item);
   }
 
-  constructor(public alertCtrl: AlertController, public navCtrl: NavController, public userData: UserData) {
+  constructor(public alertCtrl: AlertController, public navCtrl: NavController, public userData: UserData) {    
   }
 
   ngAfterViewInit() {
-    //this.getUsername();
-    this.loadProjects();
+    //this.getUsername();  
+    this.projectSegment = "public";    
+    this.loadProjectsBySegment();
   }
 
-  loadProjects() {
-    this.projectList = [];
-    this.projectList.push('Value1');
-    this.projectList.push('Value2');
-    this.projectList.push('Value3');
+  loadProjectsBySegment() {
+    if(this.projectSegment === "active") {
+      this.projects = [
+        {group:'Electric', items : [
+          {name : 'Active Electric Name1', description : 'Electric Description1', imgAsset : 'assets/img/appicon.png'},
+          {name : 'Active Electric Name2', description : 'Electric Description2', imgAsset : 'assets/img/appicon.png'}
+        ]},
+        {group:'Plumber', items : [
+          {name : 'Active Plumber 1', description : 'Plumber Description 1', imgAsset : 'assets/img/appicon.png'},
+          {name : 'Active Plumber 2', description : 'Plumber Description 2', imgAsset : 'assets/img/appicon.png'}
+        ]}
+      ];
+    } else if(this.projectSegment === "public"){
+      this.projects = [
+        {group:'Electric', items : [
+          {name : 'Public Electric Name1', description : 'Electric Description1', imgAsset : 'assets/img/appicon.png'},
+          {name : 'Public Electric Name2', description : 'Electric Description2', imgAsset : 'assets/img/appicon.png'}
+        ]},
+        {group:'Plumber', items : [
+          {name : 'Public Plumber 1', description : 'Plumber Description 1', imgAsset : 'assets/img/appicon.png'},
+          {name : 'Public Plumber 2', description : 'Plumber Description 2', imgAsset : 'assets/img/appicon.png'}
+        ]}
+      ];
+    }    
+  }
+
+  createProject() {
+    console.log('createProject');
+    this.navCtrl.push(NewProjectPage);
   }
 
   updatePicture() {
     console.log('Clicked to update picture');
   }
-  
-  updateProject() {
-  	console.log('updateProject');
+
+  updateProjects(){
+    this.loadProjectsBySegment();
   }
-  
+
   presentFilter() {
   	console.log('presentFilter');
   }
@@ -90,7 +120,7 @@ export class ProjectsPage {
       this.username = username;
     });
   }
-  
+
   goToProjectDetail(item) {
   	console.log(item.description);
   	this.navCtrl.push(ProjectDetailPage, item);

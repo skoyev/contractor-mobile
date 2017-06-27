@@ -6,23 +6,22 @@ import { Storage } from '@ionic/storage';
 import { ConferenceApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
-import { PopoverPage } from '../pages/about-popover/about-popover';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
-import { MapPage } from '../pages/map/map';
 import { SchedulePage } from '../pages/schedule/schedule';
-import { ScheduleFilterPage } from '../pages/schedule-filter/schedule-filter';
-import { SessionDetailPage } from '../pages/session-detail/session-detail';
 import { SignupPage } from '../pages/signup/signup';
-import { SpeakerDetailPage } from '../pages/speaker-detail/speaker-detail';
-import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
 import { TabsPage } from '../pages/tabs/tabs';
+import { ActiveProjects } from '../pages/active-projects/active-projects';
 import { TutorialPage } from '../pages/tutorial/tutorial';
+import { DocumentPage } from '../pages/documents/documents';
+import { MessagePage } from '../pages/messages/messages';
+import { TeamPage } from '../pages/team/team';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
 import { ProjectDetailPage } from '../pages/project-detail/project-detail';
 import { ProjectsPage } from '../pages/projects/projects';
+import { NewProjectPage } from '../pages/projects/new-project/new-project';
 import { BidsPage } from '../pages/bids/bids';
 import { BidDetailPage } from '../pages/bid-detail/bid-detail';
 import { AuthService } from '../providers/auth-service';
@@ -32,21 +31,17 @@ import { AuthService } from '../providers/auth-service';
     ConferenceApp,
     AboutPage,
     AccountPage,
+    TutorialPage,
     LoginPage,
-    MapPage,
-    PopoverPage,
     SchedulePage,
     ProjectsPage,
-    ScheduleFilterPage,
-    SessionDetailPage,
     SignupPage,
-    SpeakerDetailPage,
-    SpeakerListPage,
     TabsPage,
-    TutorialPage,
     ProjectDetailPage,
     BidsPage,
-    BidDetailPage
+    BidDetailPage, 
+    ActiveProjects,
+    NewProjectPage, DocumentPage, MessagePage, TeamPage, SchedulePage
   ],
   imports: [
     IonicModule.forRoot(ConferenceApp)
@@ -57,20 +52,14 @@ import { AuthService } from '../providers/auth-service';
     AboutPage,
     AccountPage,
     LoginPage,
-    MapPage,
-    PopoverPage,
+    TutorialPage,
     SchedulePage,
     ProjectsPage,
-    ScheduleFilterPage,
-    SessionDetailPage,
     SignupPage,
-    SpeakerDetailPage,
-    SpeakerListPage,
     TabsPage,
-    TutorialPage,
     ProjectDetailPage,
     BidsPage,
-    BidDetailPage
+    BidDetailPage, ActiveProjects, NewProjectPage, DocumentPage, MessagePage, TeamPage, SchedulePage
   ],
   providers: [ConferenceData, UserData, Storage, AuthService]
 })

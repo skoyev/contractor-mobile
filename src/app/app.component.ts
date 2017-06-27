@@ -28,16 +28,6 @@ export class ConferenceApp {
   // the root nav is a child of the root app component
   @ViewChild(Nav) nav: Nav;
 
-  // List of pages that can be navigated to from the left menu
-  // the left menu only works after login
-  // the login page disables the left menu
-  appPages: PageObj[] = [
-    { title: 'Schedule', component: TabsPage, icon: 'calendar' },
-    { title: 'Speakers', component: TabsPage, index: 1, icon: 'contacts' },
-    { title: 'Map', component: TabsPage, index: 2, icon: 'map' },
-    { title: 'About', component: TabsPage, index: 3, icon: 'information-circle' },
-  ];
-
   loggedInPages: PageObj[] = [
     { title: 'Account', component: AccountPage, icon: 'person' },
     { title: 'Logout', component: TabsPage, icon: 'log-out', logsOut: true }
@@ -63,9 +53,6 @@ export class ConferenceApp {
       // StatusBar.styleDefault();
       // Splashscreen.hide();
     });
-
-    // load the conference data
-    confData.load();
 
     // load users data
     //authService.load();
